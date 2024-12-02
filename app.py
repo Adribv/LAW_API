@@ -4,12 +4,12 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 import torch
 from together import Together
+from waitress import serve
 
 app = Flask(__name__)
 
 # Allow CORS from http://localhost:3000 specifically
 CORS(app, resources={r"/*": {"origins": "*"}})
-
 
 # Load the datasets
 laws_data = pd.read_csv('top_sections.csv')
@@ -80,4 +80,4 @@ def get_laws_and_cases():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    serve(app, host='0.0.0.0', port=5000)
