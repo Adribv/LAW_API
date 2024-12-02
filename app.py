@@ -5,6 +5,8 @@ from sentence_transformers import SentenceTransformer, util
 import torch
 from together import Together
 from waitress import serve
+from huggingface_hub import cached_download
+
 
 app = Flask(__name__)
 
